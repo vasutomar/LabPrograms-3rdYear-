@@ -25,7 +25,7 @@ int main(void) {
 
 	int vertices;
 	int weight,from,to,edges;
-	int i,j;
+	int i,j,mode;
 	int source,immediate_next;
 
 	cout<<"Enter the number of vertices in graph = ";
@@ -46,6 +46,10 @@ int main(void) {
 		}
 	}
 
+	cout<<"Enter if Directed(0) or undirected(1) = ";
+	cin>>mode;
+	mode = mode%2;
+
 	//Building Adjacency matrix
 	for(j=0;j<edges;j++) {
 		cout<<"Enter nodes and edge weight : ";
@@ -53,6 +57,8 @@ int main(void) {
 		cin>>to;
 		cin>>weight;
 		adjacency_matrix[from-1][to-1] = weight;
+		if(mode == 1)
+			adjacency_matrix[to-1][from-1] = weight;
 	}
 
 	cout<<"Enter source = ";
